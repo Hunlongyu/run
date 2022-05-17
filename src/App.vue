@@ -1,21 +1,38 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <n-config-provider :theme="activeTheme">
+   <n-layout class="container">
+     <Header @themeClick="themeChange" />
+     <n-button type="warning">Warning</n-button>
+   </n-layout>
+  </n-config-provider>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<script setup lang="ts">
+import { darkTheme, lightTheme } from 'naive-ui'
+import { ref } from 'vue'
+
+const activeTheme = ref(darkTheme)
+
+function themeChange (theme: 'system' | 'dark' | 'light') {
+  console.log('theme change', theme)
+  if (theme === 'dark') {
+    activeTheme.value = darkTheme
+  } else if (theme === 'light') {
+    activeTheme.value = lightTheme
+  } else if (theme === 'system') {
+    const theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+    activeTheme.value = theme ? darkTheme : lightTheme
+  }
+}
+</script>
+
+<style lang="scss">
+html,
+body,
+#app,
+.n-config-provider,
+.container {
+  height: 100%;
+  overflow-x: hidden;
 }
 </style>
