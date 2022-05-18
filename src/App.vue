@@ -2,7 +2,16 @@
   <n-config-provider :theme="activeTheme">
    <n-layout class="container">
      <Header @themeClick="themeChange" />
-     <n-button type="warning">Warning</n-button>
+     <div class="body">
+       <div class="left">-</div>
+       <div class="middle">90</div>
+       <div class="right">+</div>
+     </div>
+     <div class="footer">
+       <div class="meter">节拍</div>
+       <div class="effect">音效</div>
+       <div class="volume">音量</div>
+     </div>
    </n-layout>
   </n-config-provider>
 </template>
