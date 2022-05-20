@@ -41,7 +41,17 @@ body,
 #app,
 .n-config-provider,
 .container {
+  width: 100%;
   height: 100%;
   overflow-x: hidden;
+  display: flex;
+}
+.body{
+  flex: 1;
+  display: flex;
+}
+.footer{
+  height: 60px;
+  display: flex;
 }
 </style>
